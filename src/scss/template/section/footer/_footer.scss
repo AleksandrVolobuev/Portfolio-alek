@@ -1,0 +1,255 @@
+
+@use "../../../base/typography" as *;
+@use "../../../base/mixins" as *;
+
+
+.footer-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.10196078431372549);
+    padding: 30px 0;
+    &.style-two {
+        border-top: inherit;
+        background: var(--theme-color2);
+    }
+    .footer-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include tablet-s {
+            flex-direction: column;
+            gap: 20px;
+        }
+        @include mobile-l {
+            flex-direction: column;
+        }
+        .footer-text {
+            p {
+                font-size: 16px;
+                line-height: 26px;
+                color: var(--white-color);
+                font-weight: 400;
+                margin: 0;
+            }
+        }
+        .footer-social {
+            li {
+                display: inline-block;
+                margin-right: 20px;
+                a {
+                    font-size: 20px;
+                    line-height: 26px;
+                    color: var(--white-color);
+                    transition: all 500ms ease;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 50%;
+                        background: var(--white-color);
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0.2);
+                        transition: all 0.3s cubic-bezier(0.55, 0.02, 0.1, 0.9);
+                    }
+                    i {
+                        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    }
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        color: var(--theme-color);
+                        font-size: 13px;
+                        opacity: 0;
+                        transform-origin: center bottom;
+                        cursor: pointer;
+                        transform: translateX(-50%) translateY(-20px);
+                        transition: all 0.3s cubic-bezier(0.55, 0.02, 0.1, 0.9);
+                    }
+                    &:hover {
+                        color: var(--theme-color);
+                        i {
+                            transform: scale(0);
+                            transition: all 0.3s cubic-bezier(0.55, 0.02, 0.1, 0.9);
+                        }
+                        span {
+                            opacity: 1;
+                            transform: translateX(-50%) translateY(-35px);
+                        }
+                    }
+                    &:hover::after {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                        transition: all 0.5s cubic-bezier(0.75, -0.5, 0, 1.75);
+                        transition-delay: 0.2s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main-footer-area {
+    background: var(--black-color);
+    position: relative;
+    .brand-header {
+        h2 {
+            font-size: 36px;
+            line-height: 48px;
+            color: var(--white-color);
+            font-weight: 700;
+        }
+        .footer-btn-wrapper {
+            display: flex;
+            align-items: center;
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                border-radius: 50%;
+                border: 1px solid var(--bs-bg-color10);
+                text-align: center;
+                color: var(--white-color);
+                position: relative;
+                overflow: hidden;
+                span {
+                    width: 16px;
+                    height: 16px;
+                    position: relative;
+                    i {
+                        color: var(--white-color);
+                        font-size: 19px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        transition: all 300ms ease;
+                        &:last-child {
+                            left: -12px;
+                            bottom: -12px;
+                            transform: translate(0, 0);
+                            opacity: 0;
+                        }
+                    }
+                }
+                &:hover {
+                    span {
+                        i {
+                            color: var(--theme-color);
+                            &:first-child {
+                                transform: translate(30px, -30px);
+                            }
+                            &:last-child {
+                            }
+                            left: 0;
+                            bottom: 0;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .footer-widget {
+        .title {
+            font-size: 18px;
+            line-height: 30px;
+            color: var(--white-color);
+            font-weight: 500;
+            margin-bottom: 35px;
+        }
+        .list-unstyled {
+            display: flex;
+            justify-content: space-between;
+            li {
+                a {
+                    font-size: 16px;
+                    line-height: 26px;
+                    color: var(--white-color);
+                    font-weight: 500;
+                    transition: all 0.4s ease 0s;
+                    &:hover {
+                        color: var(--theme-color);
+                    }
+                }
+            }
+        }
+        .newsletter-form {
+            .form-group {
+                position: relative;
+                margin-top: 40px;
+                i {
+                    position: absolute;
+                    left: 0;
+                    width: 16px;
+                    color: var(--theme-color);
+                }
+                input {
+                    background: transparent;
+                    border-bottom: 1px solid var(--bs-bg-color10);
+                    padding: 0 25px;
+                }
+                button {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    background: var(--theme-color);
+                    padding: 14px 28px;
+                    font-size: 14px;
+                    line-height: 28px;
+                    font-weight: 500;
+                    a {
+                        color: var(--theme-color2);
+                    }
+                }
+            }
+        }
+        .footer-link {
+            li {
+                margin-bottom: 15px;
+                &:first-child {
+                    a {
+                        font-size: 18px;
+                        line-height: 28px;
+                        color: var(--white-color);
+                        font-weight: 500;
+                    }
+                }
+                a {
+                    font-size: 16px;
+                    line-height: 26px;
+                    color: var(--white-color6);
+                    font-weight: 400;
+                    i {
+                        font-size: 14px;
+                        margin-right: 8px;
+                        color: var(--theme-color);
+                    }
+                    &:hover{
+                        color: var(--white-color);
+                    }
+                }
+            }
+        }
+    }
+    .footer-shape1 {
+        position: absolute;
+        left: 5%;
+        bottom: 19%;
+        @include xxl {
+            display: none;
+        }
+    }
+    .footer-shape2 {
+        position: absolute;
+        right: 5%;
+        bottom: 19%;
+        @include xxl {
+            display: none;
+        }
+    }
+}

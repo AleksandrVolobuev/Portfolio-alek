@@ -1,0 +1,509 @@
+@use "../../base/variables" as *;
+@use "../../base/mixins" as *;
+@use "../../base/typography" as *;
+
+
+.sticky-header {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  z-index: 99999;
+  background:$bg-color1;
+  backdrop-filter: blur(9px);
+  box-shadow: 0 0 20px $white-color;
+
+  @include md {
+    background-color: $bg-color1;
+  }
+
+  &.fixed-header {
+    opacity: 1;
+    z-index: 9999;
+    visibility: visible;
+  }
+  
+  .main-menu a {
+    color: $white-color;
+  }
+
+  .main-menu > ul > li > a {
+    padding: 27px 0;
+  }
+
+  .menu-area {
+    padding: 0 0 0 30px;
+    background-color: transparent;
+    border-radius: 0 5px 5px 0;
+    @include flex-position(flex, space-between, center);
+    flex-wrap: nowrap;
+    min-height: 80px;
+
+    @include laptop-m {
+      padding: 0 15px;
+    }
+    
+    @include respond-between($laptop-m + 1, 1100px) {
+      padding: 0 15px;
+    }
+    
+    .nav-menu {
+      flex: 1;
+      min-width: 0;
+      @include flex-position(flex, flex-end, center);
+      
+      @include laptop-m {
+        padding: 0 15px;
+      }
+      
+      @include respond-between($laptop-m + 1, 1100px) {
+        padding: 0 10px;
+      }
+      
+      .header-nav {
+        flex-shrink: 1;
+        
+        .navigation {
+          li {
+            display: inline-block;
+            margin-right: 45px;
+            position: relative;
+            
+            @include respond-between($laptop-m + 1, 1100px) {
+              margin-right: 25px;
+            }
+            
+            > .sub-menu {
+              position: absolute;
+              text-align: left;
+              top: 100%;
+              left: -14px;
+              background-color: $white-color;
+              visibility: hidden;
+              min-width: 180px;
+              width: max-content;
+              opacity: 0;
+              z-index: -1;
+              border: 0;
+              box-shadow: 0 4px 15px rgba(1, 15, 28, 0.06);
+              border-radius: 0;
+              transform: scaleY(0);
+              transform-origin: top center;
+              @include transition(0.4s);
+              
+              > li {
+                display: block;
+                margin: 0;
+                border-bottom: 1px solid $border-color12;
+                
+                a {
+                  font-weight: $body-font-weight;
+                  font-family: $body-font;
+                  letter-spacing: normal;
+                  line-height: 1;
+                  padding: 15px 30px;
+                  font-size: $body-font-size;
+                  color: $dark-color;
+                  display: inline-block;
+                  width: 100%;
+                  position: relative;
+                  @include transition;
+                  
+                  &::before {
+                    @include absolute-content(100%, 0, $theme-color);
+                    left: 0;
+                    bottom: 0;
+                    z-index: -1;
+                  }
+                }
+                
+                &:hover {
+                  a {
+                    color: $white-color;
+                    &::before {
+                      height: 100%;
+                      top: 0;
+                    }
+                  }
+                }
+              }
+            }
+            
+            .sub-menu {
+              left: 0;
+            }
+            
+            &:hover {
+              .sub-menu {
+                visibility: visible;
+                opacity: 1;
+                transform: scaleY(1);
+                z-index: 9;
+              }
+            }
+            
+            @include lg {
+              margin-right: 40px;
+            }
+            
+            &:last-child {
+              margin-right: 0;
+            }
+            
+            a {
+              font-size: 15px;
+              line-height: 24px;
+              text-transform: uppercase;
+              display: inline-block;
+              color: $white-color;
+              font-weight: $body-font-weight;
+              padding: 34px 0;
+              @include transition(0.3s);
+              white-space: nowrap;
+              
+              @include respond-between($laptop-m + 1, 1100px) {
+                padding: 27px 0;
+                font-size: 14px;
+              }
+              
+              &:hover {
+                color: $theme-color;
+              }
+              
+              i {
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+        
+        @include laptop-m {
+          display: none;
+        }
+      }
+      
+      .header__navicon-2 {
+        margin-left: auto;
+        display: none;
+        padding: 25px;
+        flex-shrink: 0;
+        
+        @include laptop-m {
+          display: block;
+        }
+        
+        @include respond-between($laptop-m + 1, 1100px) {
+          padding: 20px 15px;
+        }
+      }
+    }
+    
+    .header-right-wrapper {
+      flex-shrink: 0;
+      
+      .sidebar-trigger {
+        background: $theme-color;
+        padding: 30px;
+        display: inline-block;
+        
+        @include respond-between($laptop-m + 1, 1100px) {
+          padding: 25px;
+        }
+      }
+      
+      @include laptop-m {
+        display: none;
+      }
+    }
+  }
+}
+
+.header-style-one {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 41;
+  
+  .menu-area {
+    padding: 0 0 0 30px;
+    background-color: $theme-color2;
+    border-radius: 0 5px 5px 0;
+    @include flex-position(flex, space-between, center);
+    flex-wrap: nowrap;
+    min-height: 80px;
+    
+    @include respond-between($laptop-m + 1, 1100px) {
+      padding: 0 15px;
+    }
+    
+    .nav-menu {
+      flex: 1;
+      min-width: 0;
+      @include flex-position(flex, flex-end, center);
+      
+      @include respond-between($laptop-m + 1, 1100px) {
+        padding: 0 10px;
+      }
+      
+      .header-nav {
+        flex-shrink: 1;
+        
+        .navigation {
+          li {
+            display: inline-block;
+            margin-right: 45px;
+            position: relative;
+            
+            @include respond-between($laptop-m + 1, 1100px) {
+              margin-right: 25px;
+            }
+            
+            > .sub-menu {
+              position: absolute;
+              text-align: left;
+              top: 100%;
+              left: -14px;
+              background-color: $white-color;
+              visibility: hidden;
+              min-width: 180px;
+              width: max-content;
+              opacity: 0;
+              z-index: -1;
+              border: 0;
+              box-shadow: 0 4px 15px rgba(1, 15, 28, 0.06);
+              border-radius: 0;
+              transform: scaleY(0);
+              transform-origin: top center;
+              @include transition(0.4s);
+              
+              > li {
+                display: block;
+                margin: 0;
+                border-bottom: 1px solid $border-color12;
+                
+                a {
+                  font-weight: $body-font-weight;
+                  font-family: $body-font;
+                  letter-spacing: normal;
+                  line-height: 1;
+                  padding: 15px 30px;
+                  font-size: $body-font-size;
+                  color: $dark-color;
+                  display: inline-block;
+                  width: 100%;
+                  position: relative;
+                  @include transition;
+                  
+                  &::before {
+                    @include absolute-content(100%, 0, $theme-color);
+                    left: 0;
+                    bottom: 0;
+                    z-index: -1;
+                  }
+                }
+                
+                &:hover {
+                  a {
+                    color: $white-color;
+                    &::before {
+                      height: 100%;
+                      top: 0;
+                    }
+                  }
+                }
+              }
+            }
+            
+            .sub-menu {
+              left: 0;
+            }
+            
+            &:hover {
+              .sub-menu {
+                visibility: visible;
+                opacity: 1;
+                transform: scaleY(1);
+                z-index: 9;
+              }
+            }
+            
+            @include lg {
+              margin-right: 40px;
+            }
+            
+            &:last-child {
+              margin-right: 0;
+            }
+            
+            a {
+              font-size: 15px;
+              line-height: 24px;
+              text-transform: uppercase;
+              display: inline-block;
+              color: $white-color;
+              font-weight: $body-font-weight;
+              padding: 34px 0;
+              @include transition(0.3s);
+              white-space: nowrap;
+              
+              @include respond-between($laptop-m + 1, 1100px) {
+                padding: 27px 0;
+                font-size: 14px;
+              }
+              
+              &:hover {
+                color: $theme-color;
+              }
+              
+              i {
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+        
+        @include laptop-m {
+          display: none;
+        }
+      }
+      
+      .header__navicon-2 {
+        display: none;
+        flex-shrink: 0;
+        
+        @include laptop-m {
+          display: block;
+        }
+        
+        @include respond-between($laptop-m + 1, 1100px) {
+          padding: 20px 15px;
+        }
+      }
+    }
+    
+    .header-right-wrapper {
+      flex-shrink: 0;
+      
+      .sidebar-trigger {
+        background: $theme-color;
+        padding: 30px;
+        display: inline-block;
+        
+        @include respond-between($laptop-m + 1, 1100px) {
+          padding: 25px;
+        }
+      }
+      
+      @include laptop-m {
+        display: none;
+      }
+    }
+  }
+  
+  .header-inner-one {
+    .nav-icon {
+      display: none;
+      
+      @include md {
+        display: block;
+      }
+      
+      .close {
+        position: absolute;
+        right: 10px;
+        top: 40px;
+        @include equal-size(30px);
+        color: $white-color;
+        font-size: 20px;
+      }
+    }
+
+    .header-logo {
+      padding-bottom: 90px;
+    }
+    
+    .header-nav {
+      .navigation {
+        li {
+          display: block;
+          padding-bottom: 20px;
+          
+          &:last-child {
+            padding-bottom: 0;
+          }
+          
+          a {
+            display: block;
+            font-weight: $body-font-weight;
+            font-size: 15px;
+            line-height: 24px;
+            color: $white-color;
+            padding: 10px 0;
+            text-transform: uppercase;
+            position: relative;
+            @include transition;
+            
+            &:hover,
+            &.active {
+              color: $theme-color;
+            }
+            
+            i {
+              margin-right: 18px;
+            }
+          }
+        }
+      }
+    }
+    
+    .header-search {
+      padding-top: 75px;
+      
+      form {
+        position: relative;
+        
+        input {
+          font-weight: $body-font-weight;
+          font-size: 14px;
+          width: 100%;
+          height: inherit;
+          line-height: 1.6;
+          color: $white-color;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          padding: 6px 30px 6px 0;
+          text-transform: capitalize;
+          border-bottom: 1px solid $border-color9;
+        }
+        
+        .icon-search {
+          color: $white-color6;
+          position: absolute;
+          right: 0;
+          top: 5px;
+          @include transition;
+        }
+      }
+    }
+    
+    .copyright-area {
+      text-align: left;
+      padding-top: 75px;
+      
+      p {
+        font-size: 13px;
+        line-height: 24px;
+        color: $white-color6;
+        
+        a {
+          color: $white-color;
+        }
+      }
+    }
+  }
+}

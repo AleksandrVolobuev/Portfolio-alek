@@ -1,0 +1,39 @@
+// src/scss/styles/_styles.scss
+
+// 1. Сначала ОСНОВНЫЕ зависимости
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "../base/typography" as *;
+
+// 2. Сброс стилей - используем @use
+@use "../reset/reset" as reset;
+@use "../reset/container" as container;
+@use "../reset/grid" as grid;
+@use "../reset/input" as input;
+@use "../reset/mobile-menu" as mobile-menu;
+@use "../reset/carousel-pagination" as carousel-pagination;
+
+// 3. Утилиты и общие стили - используем @use
+@use "../utilites/common" as common;
+@use "../utilites/animation" as animation;
+@use "../utilites/background" as background;
+
+
+@use "../utilites/magicCursor" as magicCursor;
+@use "../utilites/overlay" as overlay;
+@use "../utilites/popupSearch" as popupSearch;
+@use "../utilites/scrollto-top" as scrollToTop;
+@use "../utilites/selection" as selection;
+@use "../utilites/springText" as springText;
+@use "../utilites/springText1" as springText1;
+//@use "../utilites/text-color" as textColor;
+
+//@use "../utilites/waveText" as waveText;
+
+// 4. Отступы и интервалы - используем @use
+@use "../spacing/align" as align;
+@use "../spacing/gap" as gap;
+@use "../spacing/margin" as margin;
+@use "../spacing/padding" as padding;
+@use "../spacing/radius" as radius;
+@use "../spacing/section-space" as sectionSpace;

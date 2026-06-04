@@ -1,0 +1,65 @@
+@use "../../base/variables" as *;
+@use "../../base/typography" as *;
+
+
+
+/* Контейнер кнопки выбора языка */
+.language-selector {
+  position: relative;
+}
+
+.language-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: baseline;
+  color: $white-color;
+  padding: 10px 15px;
+  transition: color 0.3s;
+}
+
+
+
+
+
+.language-button:hover {
+  color: var(--theme-color); 
+}
+
+/* Выпадающее меню языков */
+.language-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: var(--theme-color);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.language-menu li {
+  list-style: none;
+}
+
+.language-menu li button {
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color:$dark-color3;
+  transition: background-color 0.3s, color 0.3s;
+    background-color: $theme-color;
+}
+
+.language-menu li button:hover {
+  background-color: $dark-color3;
+  color: $title-color;
+}

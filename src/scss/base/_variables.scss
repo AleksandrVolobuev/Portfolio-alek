@@ -1,0 +1,227 @@
+
+:root {
+  --theme-color: #24e991;
+  --theme-color2: #002623;
+  --theme-color3: #66fcb8;
+  --black-color: #000;
+  --black-color2: #021816;
+  --black-color3: #003632;
+  --black-color5: #00221f;
+  --black-color6: #333337;
+  --black-color9: #001816;
+  --gray-color: #5a7779; // Используем одно определение
+  --white-color: #ffffff;
+  --white-color2: #f9f9f9;
+  --white-color3: #f3f3f3;
+  --white-color4: #efefef;
+  --white-color5: #f3f7f4;
+  --white-color6: #96a1a0;
+  --title-color: var(--white-color);
+  --body-color: var(--gray-color);
+  --dark-color: #063232;
+  --dark-color2: #053131;
+  --dark-color3: #114f4f;
+  --gray-color2: #90b4b6;
+  --light-color: #edfbfb;
+  --light-color2: #f4f8ec;
+  --orange-color: #ff9d10;
+  --success-color: #28a745;
+  --error-color: #ff0000;
+  --bs-text-color1: #10171d;
+  --bs-text-color2: rgba(255, 255, 255, 0.7);
+  --bs-bg-color1: rgba(6, 50, 50, 0.4);
+  --bs-bg-color2: rgba(0, 0, 0, 0.6);
+  --bs-bg-color3: rgba(2, 27, 27, 0.7);
+  --bs-bg-color4: rgba(236, 248, 248, 0.2);
+  --bs-bg-color5: rgba(255, 255, 255, 0.3);
+  --bs-bg-color6: rgba(255, 255, 255, 0.5);
+  --bs-bg-color7: rgba(6, 50, 50, 0.1);
+  --bs-bg-color8: rgba(6, 50, 50, 0.8);
+  --bs-bg-color9: rgba(255, 255, 255, 0.3);
+  --bs-bg-color10: rgba(255, 255, 255, 0.1);
+  --bs-bg-color11: rgba(209, 219, 219, 0.3);
+  --bs-bg-color12: rgba(255, 255, 255, 0.2);
+  --bs-bg-color13: rgba(6, 50, 50, 0.7);
+  --bs-border-color: rgba(255, 255, 255, 0.1);
+  --bs-border-color2: rgba(255, 255, 255, 0.2);
+  --bs-border-color3: rgba(0, 0, 0, 0.05);
+  --bs-border-color4: rgba(212, 226, 226, 0.3);
+  --bs-border-color5: rgba(0, 67, 70, 0.1);
+  --bs-border-color6: rgba(6, 50, 50, 0.15);
+  --bs-border-color7: rgba(6, 50, 50, 0.1);
+  --bs-border-color8: #dce4d9;
+  --bs-border-color9: rgba(255, 255, 255, 0.3);
+  --bs-border-color10: rgba(6, 50, 50, 0.1);
+  --bs-border-color11: rgba(255, 255, 255, 0.2);
+  --bs-border-color12: rgba(6, 50, 50, 0.2);
+  --bs-border-color13: rgba(255, 255, 255, 0.15);
+  --title-font: "Inter", sans-serif;
+  --body-font: "Inter", sans-serif;
+  --icon-font: "Font Awesome 6 Pro";
+  --main-container: 1170px;
+  --container-gutters: 24px;
+  --section-space: 120px;
+  --section-space-mobile: 80px;
+  --section-space-small-mobile: 60px;
+  --section-title-space: 70px;
+  --ripple-ani-duration: 5s;
+}
+
+// Color Variation
+$theme-color: var(--theme-color);
+$theme-color2: var(--theme-color2);
+$theme-color3: var(--theme-color);
+$title-color: var(--title-color);
+$body-color: var(--body-color);
+$dark-color: var(--dark-color);
+$dark-color2: var(--dark-color2);
+$dark-color3: var(--dark-color3);
+$black-color: var(--black-color);
+$black-color2: var(--black-color2);
+$black-color3: var(--black-color3);
+$black-color5: var(--black-color5);
+$black-color6: var(--black-color6);
+$black-color9: var(--black-color9);
+$text-color1: var(--bs-text-color1);
+$text-color2: var(--bs-text-color2);
+$bg-color1: var(--bs-bg-color1);
+$bg-color2: var(--bs-bg-color2);
+$bg-color3: var(--bs-bg-color3);
+$bg-color4: var(--bs-bg-color4);
+$bg-color5: var(--bs-bg-color5);
+$bg-color6: var(--bs-bg-color6);
+$bg-color7: var(--bs-bg-color7);
+$bg-color8: var(--bs-bg-color8);
+$bg-color9: var(--bs-bg-color9);
+$bg-color10: var(--bs-bg-color10);
+$bg-color11: var(--bs-bg-color11);
+$bg-color12: var(--bs-bg-color12);
+$bg-color13: var(--bs-bg-color13);
+$gray-color: var(--gray-color);
+$gray-color2: var(--gray-color2);
+$white-color: var(--white-color);
+$white-color2: var(--white-color2);
+$white-color3: var(--white-color3);
+$white-color4: var(--white-color4);
+$white-color5: var(--white-color5);
+$white-color6: var(--white-color6);
+$light-color: var(--light-color);
+$light-color2: var(--light-color2);
+$orange-color: var(--orange-color);
+$success-color: var(--success-color);
+$error-color: var(--error-color);
+$border-color: var(--bs-border-color);
+$border-color2: var(--bs-border-color2);
+$border-color3: var(--bs-border-color3);
+$border-color4: var(--bs-border-color4);
+$border-color5: var(--bs-border-color5);
+$border-color6: var(--bs-border-color6);
+$border-color7: var(--bs-border-color7);
+$border-color8: var(--bs-border-color8);
+$border-color9: var(--bs-border-color9);
+$border-color10: var(--bs-border-color10);
+$border-color11: var(--bs-border-color11);
+$border-color12: var(--bs-border-color12);
+$border-color13: var(--bs-border-color13);
+
+// Font Variation
+$icon-font: var(--icon-font);
+$title-font: var(--title-font);
+$body-font: var(--body-font);
+
+// Typography
+$body-font-size: 16px;
+$body-line-Height: 26px;
+$body-font-weight: 400;
+$p-line-Height: 1.75;
+$p-font-size2: 18px;
+$p-line-height2: 28px;
+
+// Device Variation Breakpoints
+$hd: 1921px;
+$xxl: 1500px;
+$ml: 1399px;
+$xl: 1299px;
+$lg: 1199px;
+$md: 991px;
+$sm: 767px;
+$xs: 575px;
+$vxs: 375px;
+
+// Laptop Breakpoints
+$laptop-l: 1280px;
+$laptop-m: 1024px;
+$laptop-s: 912px;
+
+// Tablet Breakpoints
+$tablet-l: 853px;
+$tablet-m: 820px;
+$tablet-s: 540px;
+
+// Mobile Breakpoints
+$mobile-xl: 430px;
+$mobile-l: 414px;
+$mobile-m: 390px;
+$mobile-s: 360px;
+
+// Spacing
+$space-count: 30;
+$space: var(--section-space);
+$space-extra: calc(var(--section-space) - 30px);
+$space-extra2: calc(var(--section-space) - 40px);
+$space-mobile: var(--section-space-mobile);
+$space-small-mobile: var(--section-space-small-mobile);
+$space-mobile-extra: calc(var(--section-space-mobile) - 30px);
+
+// BG Color Mapping
+$bgcolorMap: (
+  "theme": $theme-color,
+  "theme2": $theme-color2,
+  "white": $white-color,
+  "dark": $dark-color,
+  "dark2": $dark-color2,
+  "dark3": $dark-color3,
+  "light": $light-color,
+  "light2": $light-color2,
+  "gray": $gray-color,
+  "border": $border-color,
+  "title": $title-color,
+);
+
+// Overlay Color Mapping
+$overlaycolorMap: (
+  "theme": $theme-color,
+  "theme2": $theme-color2,
+  "white": $white-color,
+  "dark": $dark-color,
+  "dark2": $dark-color2,
+  "dark3": $dark-color3,
+  "light": $light-color,
+  "light2": $light-color2,
+  "gray": $gray-color,
+  "overlay1": #131b23,
+);
+
+// Text Color Mapping
+$textColorsMap: (
+  "theme": $theme-color,
+  "theme2": $theme-color2,
+  "white": $white-color,
+  "dark": $dark-color,
+  "dark2": $dark-color2,
+  "dark3": $dark-color3,
+  "gray": $gray-color,
+  "gray2": $gray-color2,
+  "light": $light-color,
+  "light2": $light-color2,
+  "white6": var(--white-color6),
+  "success": $success-color,
+  "error": $error-color,
+);
+
+// Font Mapping
+$fontsMap: (
+  "icon": $icon-font,
+  "title": $title-font,
+  "body": $body-font,
+);

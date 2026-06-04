@@ -1,0 +1,115 @@
+@use "../../../base/typography" as *;
+@use "../../../base/mixins" as *;
+
+.feture-section {
+  .title-area {
+    .feature-link {
+      display: inline-block;
+      font-size: 15px;
+      line-height: 46px;
+      color: var(--white-color);
+      font-weight: 500;
+      padding-left: 70px;
+      position: relative;
+      margin-top: 10px;
+      &::before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 50%;
+        width: 60px;
+        height: 2px;
+        background-color: var(--theme-color);
+        transition: all 0.3s;
+      }
+      &:hover {
+        color: var(--theme-color);
+        padding-left: 40px;
+        &::before {
+          width: 30px;
+        }
+      }
+    }
+  }
+  .feature-list {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    @include md {
+      grid-gap: 10px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include tablet-s {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 20px;
+    }
+    li {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70px;
+      height: auto;
+      border-radius: 35px;
+      background-color: var(--theme-color2);
+      border: 2px solid var(--theme-color2);
+      text-align: center;
+      justify-self: center;
+      align-self: center;
+      transition: 0.5s;
+      &.div-1 {
+        grid-row: 1;
+        transform: translateX(160px);
+        @include ml {
+          transform: translateX(100px);
+        }
+        @include md {
+          grid-row: inherit;
+          transform: inherit;
+        }
+      }
+      &.div-2 {
+        grid-row: 2;
+        @include ml {
+          grid-row: inherit;
+        }
+        @include md {
+          grid-row: inherit;
+        }
+      }
+      &.div-3 {
+        grid-row: 2;
+        @include md {
+          grid-row: inherit;
+        }
+      }
+      &.div-4 {
+        grid-row: 3;
+        transform: translateX(160px);
+        @include ml {
+          transform: translateX(100px);
+        }
+        @include md {
+          grid-row: inherit;
+          transform: inherit;
+        }
+      }
+      a {
+        font-size: 18px;
+        padding: 0 35px 0;
+        color: var(--white-color);
+        font-weight: 500;
+        @include xs {
+          padding: 0 30px 0;
+        }
+        img {
+          margin: auto;
+        }
+      }
+      &:hover {
+        background-color: transparent;
+        border-color: var(--theme-color);
+      }
+    }
+  }
+}

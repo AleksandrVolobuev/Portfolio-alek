@@ -1,0 +1,17 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+@mixin selection-styles {
+    background: $theme-color;
+    color: $white-color;
+    text-shadow: none;
+}
+
+::selection {
+    @include selection-styles;
+}
+
+::-moz-selection {
+    @include selection-styles;
+}

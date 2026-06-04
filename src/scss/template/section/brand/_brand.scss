@@ -1,0 +1,87 @@
+
+
+@use "../../../base/typography" as *;
+@use "../../../base/mixins" as *;
+
+.brand-section{
+    .brand-title_inner{
+        .brand-title{
+            font-size: 16px;
+            color: var(--white-color);
+            font-weight: 500;
+            text-align: center;
+            margin: 0;
+            span{
+                color: var(--theme-color);
+            }
+        }
+    }
+    .brand-box__grid{
+        display: grid;
+        grid-gap: 0;
+        grid-template-columns: repeat(5, 2fr);
+        @include md{
+            grid-template-columns: repeat(4, 2fr);
+        }
+        @include tablet-m{
+            grid-template-columns: repeat(2, 2fr);
+        }
+        @include mobile-l{
+            grid-template-columns: repeat(1, 2fr);
+        }
+        .brand__item{
+            border: 1px solid rgba(255, 255, 255, 0.10196078431372549);
+            text-align: center;
+            .image{
+                display: inline-block;
+                width: 100%;
+                height: 110px;
+                line-height: 110px;
+                position: relative;
+                overflow: hidden;
+                margin-right: -1px;
+                -webkit-transition: all 300ms ease;
+                transition: all 300ms ease;
+                img{
+                    position: relative;
+                    width: auto !important;
+                    display: inline-block !important;
+                    -webkit-transition: all 500ms ease;
+                    transition: all 500ms ease;
+                    &:first-child{
+                        position: absolute;
+                        left: 0px;
+                        right: 0px;
+                        top: 0px;
+                        bottom: 0px;
+                        z-index: 1;
+                        margin: auto;
+                        -webkit-transform: translateX(50%) scaleX(2);
+                        transform: translateX(50%) scaleX(2);
+                        opacity: 0;
+                        -webkit-filter: blur(10px);
+                        filter: blur(10px);
+                    }
+                }
+                &:hover{
+                    img{
+                        &:first-child{
+                            -webkit-transform: translateX(0) scaleX(1);
+                            transform: translateX(0) scaleX(1);
+                            opacity: 1;
+                            -webkit-filter: brightness(0)invert(1)blur(0);
+                            filter: brightness(0)invert(1)blur(0);
+                        }
+                        &:nth-child(2){
+                            -webkit-transform: translateX(-50%) scaleX(2);
+                            transform: translateX(-50%) scaleX(2);
+                            opacity: 0;
+                            -webkit-filter: blur(10px);
+                            filter: blur(10px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

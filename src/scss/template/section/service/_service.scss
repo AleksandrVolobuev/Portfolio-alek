@@ -1,0 +1,129 @@
+@use "../../../base/mixins" as *;
+@use "../../../base/typography" as *;
+
+
+.service-section {
+  .service-content {
+    position: sticky;
+    top: 100px;
+    .counter-box_grid {
+      display: grid;
+      grid-gap: 0;
+      grid-template-columns: repeat(2, 1fr);
+      @include mobile-l {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .count-item {
+        padding: 5px 40px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.10196078431372549);
+        @include lg {
+          padding: 5px 30px 10px;
+        }
+        @include md {
+          text-align: center;
+        }
+        .count-box {
+          font-size: 40px;
+          line-height: 70px;
+          color: var(--white-color);
+          font-weight: 600;
+          small {
+            font-size: 30px;
+            line-height: 70px;
+            color: var(--theme-color);
+            font-weight: 600;
+          }
+        }
+        .text {
+          font-size: 16px;
+          line-height: 24px;
+          color: var(--white-color6);
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .service-wheel {
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0 0 20px;
+      margin: 0 0 20px;
+      @include mobile-s {
+        gap: 20px;
+      }
+      .service-content {
+        .title {
+          font-size: 22px;
+          margin: 0;
+          text-transform: uppercase;
+          color: var(--white-color5);
+          font-weight: 500;
+          @include xl {
+            font-size: 18px;
+          }
+        }
+        .service-sub-title {
+          font-size: 14px;
+          line-height: 26px;
+          font-weight: 400;
+          color: var(--theme-color);
+          transition: 0.5s;
+          margin: 0;
+          border: none;
+          justify-content: inherit;
+        }
+        .service-btn {
+          display: inline-block;
+          position: relative;
+          padding: 8px 0;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 500ms;
+          transform: translateY(-20px);
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--theme-color);
+            transition: all 500ms;
+          }
+          span {
+            font-size: 14px;
+            color: var(--theme-color);
+            font-weight: 500;
+            @include mobile-s {
+              font-size: 12px;
+            }
+          }
+          i {
+            font-size: 20px;
+            margin-left: 10px;
+            position: relative;
+            top: 2px;
+          }
+        }
+      }
+      &:hover {
+        .service-btn {
+          color: var(--theme-color);
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+}

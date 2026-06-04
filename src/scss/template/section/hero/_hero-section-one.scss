@@ -1,0 +1,317 @@
+
+@use "../../../base/typography" as *;
+@use "../../../base/mixins" as *;
+
+
+
+
+.hero-section {
+  padding-inline-start: 5px;
+  padding-inline-end: 5px;
+  padding: 300px 0 0px;
+
+  overflow: hidden;
+  @include lg {
+    padding: 120px 0 0;
+  }
+
+  // position: relative;
+  .hero-left {
+    position: relative;
+    z-index: 9;
+    .title {
+      font-size: 56px;
+      color: var(--white-color);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 20px;
+      @include lg {
+        font-size: 52px;
+      }
+      @include mobile-xl {
+        font-size: 44px;
+      }
+    }
+    .type-text {
+      font-size: 60px;
+      text-transform: uppercase;
+      margin-top: 7px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--white-color);
+      margin-bottom: 10px;
+      @include lg {
+        font-size: 55px;
+      }
+      @include laptop-l {
+        font-size: 48px;
+      }
+      @include mobile-xl {
+        font-size: 40px;
+      }
+
+      span {
+        color: var(--theme-color);
+      }
+    }
+    .hero-title {
+      font-size: 30px;
+      line-height: 50px;
+      color: var(--white-color);
+      font-weight: 500;
+      span {
+        text-indent: 95px;
+        display: inline-block;
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 80px;
+          height: 1px;
+          inset-inline-start: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: var(--white-color);
+        }
+      }
+    }
+  }
+  .hero-right {
+    position: relative;
+    z-index: 9;
+    display: flex;
+    justify-content: right;
+    @include sm {
+      justify-content: inherit;
+      flex-direction: column;
+    }
+
+    .hero-right-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      @include sm {
+        align-items: inherit;
+      }
+      .img-shape {
+        display: inline-block;
+      }
+      .text-1 {
+        color: var(--theme-color);
+        display: block;
+      }
+      .text-2 {
+        font-size: 20px;
+        line-height: 32px;
+        color: var(--white-color);
+        font-weight: 500;
+      }
+      .hero-exprience {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        background: var(--theme-color2);
+        padding: 40px 46px;
+        width: 428px;
+        height: 146px;
+        margin-top: 230px;
+        @include lg {
+          margin-top: 150px;
+        }
+        @include sm {
+          margin-top: 100px;
+          width: 100%;
+        }
+        @include mobile-m {
+          padding: 30px 20px;
+        }
+        .work-compeleted {
+          .count-box {
+            font-size: 36px;
+            line-height: 1.4;
+            color: #ffffff;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+          }
+          p {
+            font-size: 16px;
+            line-height: 24px;
+            color: var(--white-color6);
+            font-weight: 400;
+            position: relative;
+            padding-left: 40px;
+            &::before {
+              position: absolute;
+              content: "";
+              width: 30px;
+              height: 1px;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              background-color: var(--theme-color);
+            }
+          }
+        }
+        .work-process {
+          display: grid;
+          justify-content: flex-end;
+          position: relative;
+          a {
+            font-size: 20px;
+            color: var(--theme-color);
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.5s;
+            position: relative;
+            z-index: 9;
+          }
+        }
+      }
+    }
+  }
+  .hero-img {
+    position: absolute;
+    bottom: 0;
+    top: 170px;
+    inset-inline-start: 38%;
+    z-index: 2;
+    @include xl {
+      inset-inline-start: 32%;
+    }
+    &.home-two {
+      inset-inline-start: 36%;
+      @include xxl {
+        inset-inline-start: 30%;
+      }
+    }
+  }
+  .hero-image-shape {
+    position: absolute;
+    top: 140px;
+    inset-inline-end: 39%;
+    z-index: 1;
+    @include xxl {
+      inset-inline-end: 32%;
+    }
+    @include xl {
+      inset-inline-start: 42%;
+    }
+    @include ml {
+      inset-inline-end: 30%;
+    }
+    &.home-two {
+      inset-inline-end: 37%;
+      @include xxl {
+        inset-inline-end: 33%;
+      }
+      @include xl {
+        inset-inline-end: 26%;
+      }
+    }
+  }
+  .hero-shape {
+    position: absolute;
+    bottom: 95px;
+    inset-inline-start: 35%;
+    @include xl {
+      inset-inline-start: 20%;
+    }
+    @include laptop-m {
+      inset-inline-start: 42%;
+    }
+    @include laptop-s {
+      inset-inline-start: 52%;
+      bottom: 40%;
+    }
+    @include mobile-xl {
+      inset-inline-start: 70%;
+      bottom: 40%;
+    }
+    @include vxs {
+      display: none;
+    }
+    &.home-two {
+      bottom: 95px;
+      inset-inline-start: 32%;
+      @include xxl {
+        bottom: 95px;
+        inset-inline-start: 18%;
+      }
+      @include lg {
+        inset-inline-start: 36%;
+      }
+      @include respond-tablet-l {
+        bottom: 300px;
+        inset-inline-start: 470px;
+      }
+      @include respond-tablet-m {
+        inset-inline-start: 50%;
+        bottom: 32%;
+      }
+      @include sm {
+        inset-inline-start: 66%;
+        bottom: 50%;
+      }
+      @include mobile-l {
+        display: none;
+      }
+    }
+  }
+  .hero-work-shape {
+    position: absolute;
+    bottom: 221px;
+    inset-inline-end: 21%;
+    @include ml {
+      inset-inline-end: 10%;
+    }
+    &.home-two {
+      inset-inline-end: 17%;
+      @include xxl {
+        inset-inline-end: 8%;
+      }
+    }
+  }
+}
+
+.sidebar-left {
+  padding-inline-start: 285px;
+  @include laptop-m {
+    padding-inline-start: inherit;
+  }
+}
+@media(max-width: 1024px) {
+  .lm-text-center {
+    text-align: center !important
+  }
+
+  .lm-text-left {
+    text-align: left !important
+  }
+
+  .lm-text-right {
+    text-align: right !important
+  }
+
+  .lm-d-none {
+    display: none !important
+  }
+
+  .lm-d-block {
+    display: block !important
+  }
+
+  .lm-d-flex {
+    display: flex !important
+  }
+
+  .lm-d-inline-block {
+    display: inline-block !important
+  }
+}

@@ -1,0 +1,33 @@
+/*----------------------------------------*/
+/*  Magic Cursor css start
+/*----------------------------------------*/
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+@media (min-width: 992px) {
+  .magic-cursor {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    user-select: none;
+    pointer-events: none;
+    z-index: 999999;
+    background: var(--theme-color);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &.cursor-grow {
+      transform: scale(5);
+      background: var(--theme-color2);
+      opacity: 0.4;
+    }
+
+    &.hide {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  }
+}

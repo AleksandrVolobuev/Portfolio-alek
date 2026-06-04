@@ -1,0 +1,140 @@
+@use "../../../base/typography" as *;
+
+
+.blog-section{
+    background: var(--theme-color2);
+    .title-area{
+        text-align: center;
+    }
+    .blog-slider-wrapper{
+        .blog-slider{
+            padding-bottom: 60px;
+            .blog-single-box{
+                .blog-inner{
+                    overflow: hidden;
+                    position: relative;
+                    &::after{
+                        position: absolute;
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        top: 0;
+                        z-index: 1;
+                        pointer-events: none;
+                        background-color: rgba(0, 0, 0, 0.3);
+                    }
+                    img{
+                        width: 100%;
+                        transform: scale(1);
+                        transition: all 2s;
+                    }
+                    .blog-content{
+                        position: absolute;
+                        inset-inline-start: 0px;
+                        bottom: 0;
+                        display: flex;
+                        align-items: flex-end;
+                        transition: all 0.6s;
+                        z-index: 5;
+                        margin: 0 35px;
+                        .blog-meta{
+                            padding-bottom: 15px;
+                            transition: all 0.5s;
+                            li{
+                                display: inline-block;
+                                margin-right: 5px;
+                                a{
+                                    font-size: 12px;
+                                    text-transform: uppercase;
+                                    color: var(--white-color);
+                                    font-weight: 500;
+                                    padding: 10px 11px;
+                                    background-color: rgba(255,255,255,0.2);
+                                    transition: all .5s;
+                                    border-radius: 3px;
+                                    &:hover{
+                                        color: var(--theme-color);
+                                    }
+                                }
+                            }
+                        }
+                        .blog-title{
+                            font-size: 20px;
+                            line-height: 30px;
+                            color: var(--white-color);
+                            font-weight: 600;
+                            transition: all 0.5s;
+                            transition-delay: 0.03s;
+                            &:hover{
+                                color: var(--theme-color);
+                            }
+                        }
+                        .blog-link{
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 1.5;
+                            color: var(--white-color);
+                            padding-bottom: 3px;
+                            transition: all 0.5s;
+                            opacity: 0;
+                            visibility: hidden;
+                            display: inline-block;
+                            text-transform: uppercase;
+                            position: relative;
+                            transition-delay: 0.05s;
+                            &::after{
+                                position: absolute;
+                                content: "";
+                                width: 100%;
+                                height: 1px;
+                                left: 0;
+                                bottom: 0;
+                                background: var(--white-color);
+                                transition: all 0.3s;
+                            }
+                            &:hover::after{
+                                width: 0%;
+                                background: var(--white-color);
+                            }
+                        }
+                    }
+                }
+                &:hover{
+                    .blog-inner{
+                        img{
+                            transform: scale(1.1);
+                        }
+                        .blog-content{
+                            .blog-meta{
+                                transform: translateY(-40px);
+                            }
+                            .blog-title{
+                                transform: translateY(-40px);
+                            }
+                            .blog-link{
+                                opacity: 1;
+                                visibility: visible;
+                                transform: translateY(-40px);
+                            }
+                        }
+                    }
+                }
+            }
+            .swiper-pagination{
+                bottom: 0 !important;
+                .swiper-pagination-bullet{
+                    width: 14px;
+                    height: 14px;
+                    background-color: transparent;
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+                    opacity: 1;
+                    &.swiper-pagination-bullet-active{
+                        background-color: var(--theme-color);
+                        border: 2px solid var(--theme-color);
+                    }
+                }
+            }
+        }
+    }
+}

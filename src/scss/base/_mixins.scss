@@ -1,0 +1,469 @@
+@use "variables" as vars;
+@use "sass:math";
+
+// Миксин для абсолютного центрирования
+@mixin center($position: absolute) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin animate($name, $duration: 1s, $timing-function: ease, $delay: 0s, $iteration-count: 1, $fill-mode: forwards) {
+  animation: {
+    name: $name;
+    duration: $duration;
+    timing-function: $timing-function;
+    delay: $delay;
+    iteration-count: $iteration-count;
+    fill-mode: $fill-mode;
+  }
+}
+
+@mixin overlay($opacity: vars.$opacity, $z-index: 0) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: $opacity;
+  z-index: $z-index;
+}
+
+@mixin equal-size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin height-lh($height, $lineheight: $height) {
+  height: $height;
+  line-height: $lineheight;
+}
+
+@mixin equal-size-lineHeight($width, $height: $width, $Lheight: $width) {
+  width: $width;
+  height: $height;
+  line-height: $Lheight;
+}
+
+@mixin flex-position($display, $contet, $items) {
+  display: $display;
+  justify-content: $contet;
+  align-items: $items;
+}
+
+@mixin center-position($top: vars.$top, $left: vars.$top) {
+  position: absolute;
+  top: $top;
+  left: $top;
+  transform: translate(-#{$top}, -#{$top});
+}
+
+@mixin inputPlaceholder() {
+  $selector: '';
+  $prefixes: (moz: "::-moz", webkit: "::-webkit", ie: ":-ms");
+
+  @each $prop, $value in $prefixes {
+    @if $prop != "moz" {
+      $selector: #{$value}-input-placeholder;
+    } @else {
+      $selector: #{$value}-placeholder;
+    }
+
+    @if & {
+      &#{$selector} {
+        @content;
+      }
+    } @else {
+      #{$selector} {
+        @content;
+      }
+    }
+  }
+
+  &::placeholder {
+    @content;
+  }
+}
+
+// Миксин кругового расположения
+@mixin on-circle($item-count, $circle-size, $item-size, $rotCount: 0, $angleCount: 360) {
+  > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $item-size;
+    height: $item-size;
+    line-height: $item-size;
+    margin: -($item-size * 0.5);
+
+    $angle: #{$angleCount / $item-count};
+    $rot: $rotCount;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: rotate($rot * 1deg) translate($circle-size * 0.5) rotate($rot * -1deg);
+      }
+
+      $rot: $rot + $angle;
+    }
+  }
+}
+
+@mixin transition($duration: 0.4s, $timing-function: ease, $delay: 0s) {
+  transition: all $duration $timing-function $delay;
+}
+
+@mixin transition-properties($props...) {
+  -webkit-transition: $props;
+  -o-transition: $props;
+  transition: $props;
+}
+
+@mixin transition-delay($itemcount: 1, $transitionCount: 0.0s) {
+  $transition: $transitionCount;
+
+  @for $i from 1 through $itemcount {
+    &:nth-of-type(#{$i}) {
+      transition-delay: ($transition + $transitionCount);
+    }
+
+    $transition: $transition + 0.1s;
+  }
+}
+
+// Media Queries
+@mixin hd {
+  @media (min-width: #{vars.$hd + 1}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (max-width: #{vars.$xxl}) {
+    @content;
+  }
+}
+
+@mixin ml {
+  @media (max-width: #{vars.$ml}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: #{vars.$xl}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: #{vars.$lg}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: #{vars.$md}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: #{vars.$sm}) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media (max-width: #{vars.$xs}) {
+    @content;
+  }
+}
+
+@mixin vxs {
+  @media (max-width: #{vars.$vxs}) {
+    @content;
+  }
+}
+
+@mixin mobile-s {
+  @media (max-width: #{vars.$mobile-s}) {
+    @content;
+  }
+}
+
+@mixin mobile-m {
+  @media (max-width: #{vars.$mobile-m}) {
+    @content;
+  }
+}
+
+@mixin respond-mobile-m {
+  @media (min-width: #{vars.$mobile-m}) and (max-width: #{vars.$mobile-l - 1}) {
+    @content;
+  }
+}
+
+@mixin mobile-l {
+  @media (max-width: #{vars.$mobile-l}) {
+    @content;
+  }
+}
+
+@mixin respond-mobile-l {
+  @media (min-width: #{vars.$mobile-l}) and (max-width: #{vars.$mobile-xl - 1}) {
+    @content;
+  }
+}
+
+@mixin mobile-xl {
+  @media (max-width: #{vars.$mobile-xl}) {
+    @content;
+  }
+}
+
+@mixin respond-mobile-xl {
+  @media (min-width: #{vars.$mobile-xl}) and (max-width: #{vars.$tablet-s - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-s {
+  @media (max-width: #{vars.$tablet-s}) {
+    @content;
+  }
+}
+
+@mixin respond-tablet-s {
+  @media (min-width: #{vars.$tablet-s}) and (max-width: #{vars.$xs - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-m {
+  @media (max-width: #{vars.$tablet-m}) {
+    @content;
+  }
+}
+
+@mixin respond-tablet-m {
+  @media (min-width: #{vars.$tablet-m}) and (max-width: #{vars.$tablet-l - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-l {
+  @media (max-width: #{vars.$tablet-l}) {
+    @content;
+  }
+}
+
+@mixin respond-tablet-l {
+  @media (min-width: #{vars.$tablet-l}) and (max-width: #{vars.$laptop-s - 1}) {
+    @content;
+  }
+}
+
+@mixin laptop-s {
+  @media (max-width: #{vars.$laptop-s}) {
+    @content;
+  }
+}
+
+@mixin respond-laptop-s {
+  @media (min-width: #{vars.$laptop-s}) and (max-width: #{vars.$md - 1}) {
+    @content;
+  }
+}
+
+@mixin laptop-m {
+  @media (max-width: #{vars.$laptop-m}) {
+    @content;
+  }
+}
+
+@mixin laptop-l {
+  @media (max-width: #{vars.$laptop-l}) {
+    @content;
+  }
+}
+
+@mixin respond-NestHubMax {
+  @media (min-width: #{vars.$laptop-l}) and (max-width: #{vars.$xl - 1}) {
+    @content;
+  }
+}
+
+@mixin nestHub {
+  @media (min-width: #{vars.$md + 1}) and (max-width: #{vars.$laptop-m}) {
+    @content;
+  }
+}
+
+@mixin nestHubMax {
+  @media (min-width: #{vars.$lg + 1}) and (max-width: #{vars.$laptop-l}) {
+    @content;
+  }
+}
+
+@mixin respond-between($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+// Прочие
+@mixin rtl {
+  [dir="rtl"] {
+    @content;
+  }
+}
+
+@mixin text-background($background, $text-color: transparent, $blend-mode: normal, $bg-size: auto) {
+  background: $background;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: $text-color;
+  background-size: $bg-size;
+  background-blend-mode: $blend-mode;
+}
+
+@mixin position($vertical, $horizontal) {
+  position: absolute;
+  #{$vertical}: 0;
+  #{$horizontal}: 0;
+  z-index: -1;
+}
+
+@mixin center-grid {
+  display: grid;
+  place-items: center;
+  place-content: center;
+}
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transparent-border($b-color, $border-width) {
+  text-shadow: -#{$border-width} -#{$border-width} 0 $b-color,
+    #{$border-width} -#{$border-width} 0 $b-color,
+    -#{$border-width} #{$border-width} 0 $b-color,
+    #{$border-width} #{$border-width} 0 $b-color;
+}
+
+@mixin absolute-content($width: 100%, $height: 100%, $background: none) {
+  position: absolute;
+  content: "";
+  width: $width;
+  height: $height;
+  background: $background;
+  transition: all 0.4s ease-in-out;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  content: '';
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  @include transition;
+}
+
+@mixin absolute-centerX {
+  position: absolute;
+  content: '';
+  left: 50%;
+  transform: translateX(-50%);
+  @include transition;
+}
+
+@mixin absolute-centerY {
+  position: absolute;
+  content: '';
+  top: 50%;
+  transform: translateY(-50%);
+  @include transition;
+}
+
+@mixin border($side, $width, $style, $color) {
+  position: relative;
+  border-#{$side}: $width #{$style} #{$color} !important;
+}
+
+@mixin border-style($width: 1px, $height: 1px, $background: vars.$dark-color) {
+  width: $width;
+  height: $height;
+  background-color: $background;
+}
+
+@mixin filter-theme-color {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(81%) saturate(1769%) hue-rotate(346deg) brightness(94%) contrast(89%);
+}
+
+@mixin filter-theme-color2 {
+  filter: brightness(0) saturate(100%) invert(91%) sepia(12%) saturate(1224%) hue-rotate(31deg) brightness(104%) contrast(75%);
+}
+
+@mixin filter-dark-color {
+  filter: brightness(0) saturate(100%) invert(12%) sepia(97%) saturate(556%) hue-rotate(135deg) brightness(92%) contrast(95%);
+}
+
+@mixin filter-white-color {
+  filter: brightness(0) invert(1);
+}
+
+@mixin bg-gradient($color1, $color2, $percentage: 50%) {
+  background-image: linear-gradient($color1 $percentage, $color2 $percentage);
+}
+
+@mixin mix-blend-mode($modes...) {
+  @each $mode in $modes {
+    .mbm-#{$mode} {
+      mix-blend-mode: $mode;
+    }
+  }
+}
+
+@mixin max-width($widths...) {
+  @each $width in $widths {
+    .mw-#{$width} {
+      max-width: $width !important;
+    }
+  }
+}
+
+@mixin direction($value) {
+  direction: #{$value};
+}
+// Добавьте в конец файла src/scss/base/_mixins.scss
+
+// Миксин для фонового изображения
+@mixin background-content($repeat: no-repeat, $size: cover, $position: center center) {
+  background-repeat: $repeat;
+  background-size: $size;
+  background-position: $position;
+}
+
+// Альтернативные названия для совместимости
+@mixin bg-cover($repeat: no-repeat, $position: center center) {
+  background-repeat: $repeat;
+  background-size: cover;
+  background-position: $position;
+}
+
+@mixin bg-contain($repeat: no-repeat, $position: center center) {
+  background-repeat: $repeat;
+  background-size: contain;
+  background-position: $position;
+}
+
+@mixin bg-fixed($repeat: no-repeat, $size: cover, $position: center center) {
+  background-repeat: $repeat;
+  background-size: $size;
+  background-position: $position;
+  background-attachment: fixed;
+}
